@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071018" />
+  <meta name="description" content="বাংলা লাইভ টিভি দেখার জন্য আধুনিক IPTV প্লেয়ার" />
+  <title>CricBD — Modern IPTV Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CricBD হোম">
+      <span class="brand-mark"><span></span></span>
+      <span><strong>CricBD</strong><small>LIVE TV</small></span>
+    </a>
+    <div class="live-pill"><i></i><span>লাইভ সার্ভিস</span></div>
+    <button class="icon-button" id="themeButton" aria-label="থিম পরিবর্তন" title="থিম পরিবর্তন">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+    </button>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-copy">
+      <div><p class="eyebrow"><span></span> আপনার বিনোদন, এক জায়গায়</p><h1>লাইভ টিভি দেখুন<br/><em>নতুন অভিজ্ঞতায়।</em></h1></div>
+      <p>পছন্দের চ্যানেল খুঁজুন এবং নিরবচ্ছিন্নভাবে উপভোগ করুন—যেকোনো ডিভাইস থেকে, যেকোনো সময়।</p>
+    </section>
+
+    <section class="player-layout">
+      <div class="video-column">
+        <div class="video-shell" id="videoShell">
+          <video id="video" playsinline controls></video>
+          <div class="video-placeholder" id="videoPlaceholder">
+            <div class="signal-icon"><span></span><span></span><span></span></div>
+            <h2>আপনার চ্যানেল বেছে নিন</h2><p>ডান পাশের তালিকা থেকে যেকোনো চ্যানেল চালু করুন</p>
+          </div>
+          <div class="video-loading hidden" id="videoLoading"><div class="spinner"></div><span>স্ট্রিম প্রস্তুত হচ্ছে...</span></div>
+          <div class="video-error hidden" id="videoError"><strong>চ্যানেলটি চালানো যাচ্ছে না</strong><span>অন্য একটি চ্যানেল চেষ্টা করুন</span></div>
+          <div class="now-playing hidden" id="nowPlaying"><span class="on-air">LIVE</span><div><small>এখন দেখছেন</small><strong id="playingName"></strong></div></div>
+        </div>
+        <div class="player-meta">
+          <div><span class="meta-icon">✦</span><p><small>স্ট্রিম কোয়ালিটি</small><strong>Auto · HD</strong></p></div>
+          <div><span class="meta-icon">◉</span><p><small>প্লেলিস্ট</small><strong id="playlistStatus">সংযোগ হচ্ছে...</strong></p></div>
+          <button id="reloadButton" class="text-button">↻ রিফ্রেশ</button>
+        </div>
+      </div>
+
+      <aside class="channel-panel">
+        <div class="panel-head"><div><span>চ্যানেলসমূহ</span><strong id="channelCount">—</strong></div><button class="icon-button small" id="settingsButton" aria-label="প্লেলিস্ট সেটিংস">⋯</button></div>
+        <div class="url-box hidden" id="urlBox"><label for="playlistUrl">প্লেলিস্ট URL</label><div><input id="playlistUrl" type="url" /><button id="loadUrlButton">লোড</button></div></div>
+        <label class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="searchInput" type="search" placeholder="চ্যানেল খুঁজুন..." autocomplete="off"/><kbd>⌘ K</kbd></label>
+        <div class="category-tabs" id="categoryTabs"><button class="active" data-category="সব">সব</button><button data-category="পছন্দের">পছন্দের</button></div>
+        <div class="channel-list" id="channelList" aria-live="polite">
+          <div class="skeleton-list">
+            <div class="skeleton-row"><i></i><span></span></div>
+            <div class="skeleton-row"><i></i><span></span></div>
+            <div class="skeleton-row"><i></i><span></span></div>
+            <div class="skeleton-row"><i></i><span></span></div>
+            <div class="skeleton-row"><i></i><span></span></div>
+            <div class="skeleton-row"><i></i><span></span></div>
+          </div>
+        </div>
+        <div class="panel-foot"><span><i></i> সকল সিস্টেম সচল</span><small>সর্বশেষ আপডেট <b id="lastUpdated">এখন</b></small></div>
+      </aside>
+    </section>
+
+    <section class="features">
+      <article><span>⚡</span><div><h3>দ্রুত স্ট্রিমিং</h3><p>অপ্টিমাইজড প্লেব্যাক</p></div></article>
+      <article><span>◈</span><div><h3>সব ডিভাইসে</h3><p>মোবাইল, ট্যাব ও ডেস্কটপ</p></div></article>
+      <article><span>♢</span><div><h3>সহজ ও নিরাপদ</h3><p>কোনো লগইন প্রয়োজন নেই</p></div></article>
+    </section>
+  </main>
+  <footer><span>© ২০২৬ CricBD</span><p>শুধু উন্মুক্ত সোর্সের স্ট্রিম দেখানো হয়</p><a href="#">সহায়তা</a></footer>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
